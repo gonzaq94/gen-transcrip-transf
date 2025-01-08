@@ -18,8 +18,7 @@ def call_gpt(query: str, temp: float = 0) -> Optional[str]:
             }
         ],
         model=MODEL_VERSION,
-        temperature=temp,
-        response_format={"type": "json_object"},
+        temperature=temp
     )
 
     return response.choices[0].message.content
