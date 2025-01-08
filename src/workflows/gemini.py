@@ -4,10 +4,8 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 MODEL_VERSION = "gemini-1.5-flash"
-TEMPERATURE = 0  # the smaller the temperature, the lower the variability in the response
 
-
-def call_gemini(query: str) -> str:
+def call_gemini(query: str, temp: float = 0) -> str:
     model = genai.GenerativeModel(MODEL_VERSION)
 
     # get number of tokens
@@ -18,7 +16,7 @@ def call_gemini(query: str) -> str:
 
     response = model.generate_content(
         query,
-        generation_config=genai.types.GenerationConfig(temperature=TEMPERATURE),
+        generation_config=genai.types.GenerationConfig(temperature=temp),
         stream=False
     )
 

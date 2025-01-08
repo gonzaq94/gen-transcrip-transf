@@ -6,10 +6,9 @@ API_KEY = os.getenv("MISTRAL_API_KEY")
 
 # Mistral model version and parameters
 MODEL_VERSION = "mistral-large-latest" #"mistral-7b"  # Adjust this to the model version you're using
-TEMPERATURE = 0  # Lower temperature for more deterministic responses
 
 # Function to call Mistral API
-def call_mistral(query: str) -> str:
+def call_mistral(query: str, temp: float = 0) -> str:
 
     client = Mistral(api_key=API_KEY)
 
@@ -20,7 +19,8 @@ def call_mistral(query: str) -> str:
                 "role": "user",
                 "content": query,
             },
-        ]
+        ],
+        temperature=temp
     )
 
     return chat_response.choices[0].message.content

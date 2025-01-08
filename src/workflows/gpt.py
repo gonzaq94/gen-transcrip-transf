@@ -6,7 +6,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 MODEL_VERSION = "gpt-4o-mini"
 TEMPERATURE = 0
-def call_gpt(query: str) -> Optional[str]:
+def call_gpt(query: str, temp: float = 0) -> Optional[str]:
 
     client = openai.OpenAI()
 
@@ -18,7 +18,7 @@ def call_gpt(query: str) -> Optional[str]:
             }
         ],
         model=MODEL_VERSION,
-        temperature=TEMPERATURE,
+        temperature=temp,
         response_format={"type": "json_object"},
     )
 

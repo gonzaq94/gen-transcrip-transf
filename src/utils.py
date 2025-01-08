@@ -15,17 +15,17 @@ The output teaching transcript should be detailed, coherent, and logically struc
 """
 
 # Define a function to process inputs and generate predictions
-def generate_output(text: str, model_choice: str) -> str:
+def generate_output(text: str, model_choice: str, temperature: float) -> str:
     query = f"{BASE_PROMPT}. Input text: \n\n {text} \n\n Output teaching transcript:"
 
     if model_choice == "Gemini":
-        return call_gemini(query)
+        return call_gemini(query, temp=temperature)
     elif model_choice == "Claude":
-        return call_claude(query)
+        return call_claude(query, temp=temperature)
     elif model_choice == "GPT":
-        return call_gpt(query)
+        return call_gpt(query, temp=temperature)
     elif model_choice == "Mistral":
-        return call_mistral(query)
+        return call_mistral(query, temp=temperature)
     else:
         raise NotImplementedError(f"Model {model_choice} is not supported.")
 
