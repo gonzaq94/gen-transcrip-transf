@@ -16,17 +16,3 @@ def call_gemini(query: str) -> str:
     )
 
     return response.text
-
-def main():
-
-    with open("example.txt", "r") as file:
-        text = file.read()
-
-    out = call_gemini(text)
-
-    print(out)
-
-    print(f"Out number of words: {len(text.split())}")
-
-if __name__ == "__main__":
-    main()

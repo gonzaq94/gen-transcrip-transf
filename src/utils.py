@@ -1,6 +1,6 @@
 import gradio as gr
 from src.workflows.gemini import call_gemini
-from src.workflows.gpt2 import call_gpt2
+from workflows.gpt import call_gpt
 from src.workflows.claude import call_claude
 from src.workflows.mistral import call_mistral
 import PyPDF2
@@ -22,8 +22,8 @@ def generate_output(text: str, model_choice: str) -> str:
         return call_gemini(query)
     elif model_choice == "Claude":
         return call_claude(query)
-    elif model_choice == "GPT-2":
-        return call_gpt2(query)
+    elif model_choice == "GPT":
+        return call_gpt(query)
     elif model_choice == "Mistral":
         return call_mistral(query)
     else:
