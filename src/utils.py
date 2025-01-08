@@ -9,8 +9,8 @@ MIN_NUMBER_WORDS = 6000
 
 BASE_PROMPT = f"""
 Your objective is to transform a given transcript into a teaching transcript that could be used by a course instructor to educate students on
-the same topic. The input text contains a transcript of a speaker discussing a topic (e.g., cybersecurity,
-machine learning, or marketing). The conversation may be casual and lack structure.
+the same topic. The input text contains a transcript of a speaker discussing a topic. The conversation may be casual and lack structure. Do not invent anything.
+If the input text is meaningless or does not have any sense, just return a message saying to input a meaningful text.
 The output teaching transcript should be detailed, coherent, and logically structured. It should contain at least {MIN_NUMBER_WORDS} words (without spaces).
 """
 
