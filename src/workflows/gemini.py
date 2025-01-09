@@ -10,7 +10,7 @@ def get_num_tokens_gemini(text: str) -> int:
         
     model = genai.GenerativeModel(MODEL_VERSION)
 
-    return model.count_tokens(text).totalTokens
+    return model.count_tokens(text).total_tokens
 
 def call_gemini(base_prompt: str, input_text: str, temp: float = 0) -> str:
 
