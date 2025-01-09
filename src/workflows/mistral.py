@@ -15,7 +15,9 @@ def get_num_tokens_mistral(text: str) -> int:
     return len(enc.encode(text))
 
 # Function to call Mistral API
-def call_mistral(query: str, empty_query: str, temp: float = 0) -> str:
+def call_mistral(base_prompt: str, input_text: str, temp: float = 0) -> str:
+
+    query = f"{base_prompt}. Input text: \n\n {input_text} \n\n Output teaching transcript:"
 
     client = Mistral(api_key=API_KEY)
 

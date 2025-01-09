@@ -15,7 +15,9 @@ def get_num_tokens_claude(text: str) -> int:
     return len(enc.encode(text))
 
 # Function to call Claude API
-def call_claude(query: str, empty_query: str, temp: float = 0) -> str:
+def call_claude(base_prompt: str, input_text: str, temp: float = 0) -> str:
+
+    query = f"{base_prompt}. Input text: \n\n {input_text} \n\n Output teaching transcript:"
 
     client = anthropic.Anthropic(
         api_key=API_KEY,

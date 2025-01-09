@@ -25,3 +25,19 @@ def call_gemini(base_prompt: str, input_text: str, temp: float = 0) -> str:
     )
 
     return response.text
+
+def validate_text(input_text: str):
+
+    query = f"""
+    You will get as input some text. You need to decide if the next is meaningless. Input text: \n\n {input_text} \n\n Output a binary answer, either 'yes' if the input text is valid, or 'no' if it is meaningless:
+    """
+
+    model = genai.GenerativeModel(MODEL_VERSION)
+
+    response = model.generate_content(
+        query,
+        generation_config=genai.types.GenerationConfig(temperature=0),
+        stream=False
+    )
+
+    return response.text

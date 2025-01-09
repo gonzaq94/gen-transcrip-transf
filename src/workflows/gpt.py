@@ -12,7 +12,9 @@ def get_num_tokens_gpt(text: str) -> int:
     enc = tiktoken.get_encoding("cl100k_base")
     return len(enc.encode(text))
 
-def call_gpt(query: str, empty_query: str, temp: float = 0) -> Optional[str]:
+def call_gpt(base_prompt: str, input_text: str, temp: float = 0) -> Optional[str]:
+
+    query = f"{base_prompt}. Input text: \n\n {input_text} \n\n Output teaching transcript:"
 
     client = openai.OpenAI()
 
