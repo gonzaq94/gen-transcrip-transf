@@ -29,6 +29,7 @@ def generate_output(text: str, model_choice: str, temperature: float, min_number
     base_prompt = f"""
     Your objective is to transform a given transcript into a teaching transcript that could be used by a course instructor to educate students on
     the same topic. The input text contains a transcript of a speaker discussing a topic. The conversation may be casual and lack structure. Do not invent anything.
+    If the input is meaningless or random, just output an error message.
     The output teaching transcript should be detailed, coherent, and logically structured. It should contain at least {min_number_words} words (without spaces).
     """
 
