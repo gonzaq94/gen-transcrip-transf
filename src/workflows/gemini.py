@@ -4,15 +4,19 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 MODEL_VERSION = "gemini-1.5-flash"
+MAX_TOKENS_GEMINI = 1048576
 
-def call_gemini(query: str, temp: float = 0) -> str:
+def get_num_tokens_gemini(text: str) -> int:
+        
     model = genai.GenerativeModel(MODEL_VERSION)
 
-    # get number of tokens
+    return model.count_tokens(text)
 
-    number_tokens = model.count_tokens(query)
+def call_gemini(base_prompt: str, input_text: str, temp: float = 0) -> str:
 
-    print(number_tokens)
+    query = f"{base_prompt}. Input text: \n\n {input_text} \n\n Output teaching transcript:"
+
+    model = genai.GenerativeModel(MODEL_VERSION)
 
     response = model.generate_content(
         query,

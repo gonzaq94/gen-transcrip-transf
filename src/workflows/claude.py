@@ -8,8 +8,13 @@ API_URL = "https://api.anthropic.com/v1/complete"
 
 # Claude model version and parameters
 MODEL_VERSION = "claude-3-5-sonnet-20241022"
+MAX_TOKENS_CLAUDE = 1048576
+
+def get_num_tokens_claude(text: str) -> int:
+    pass
+
 # Function to call Claude API
-def call_claude(query: str, temp: float = 0) -> str:
+def call_claude(query: str, empty_query: str, temp: float = 0) -> str:
 
     client = anthropic.Anthropic(
         api_key=API_KEY,
