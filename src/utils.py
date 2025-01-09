@@ -44,11 +44,11 @@ def generate_output(text: str, model_choice: str, temperature: float) -> str:
     elif model_choice == "GPT":
         call_llm = call_gpt
         get_num_tokens = get_num_tokens_gpt
-        get_num_tokens = MAX_TOKENS_GPT
+        max_n_tokens = MAX_TOKENS_GPT
     elif model_choice == "Mistral":
         call_llm = call_mistral
         get_num_tokens = get_num_tokens_mistral
-        get_num_tokens = MAX_TOKENS_MISTRAL
+        max_n_tokens = MAX_TOKENS_MISTRAL
     else:
         raise NotImplementedError(f"Model {model_choice} is not supported.")
     
