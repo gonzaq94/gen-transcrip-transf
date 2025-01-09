@@ -16,7 +16,19 @@ The output teaching transcript should be detailed, coherent, and logically struc
 
 def split_text_in_chunks(text: str, tokens_empty_prompt: int, tokens_text: int, max_n_tokens: int) -> list[str]:
 
-    return [text]
+    n_chunks = (tokens_empty_prompt + tokens_text) // max_n_tokens + 1 # approximation
+
+    avg_length = len(text) // n_chunks
+    remainder = len(text) % n_chunks
+
+    chunks = []
+    start = 0
+    for i in range(n_chunks):
+        end = start + avg_length + (1 if i < remainder else 0)
+        chunks.append(text[start:end])
+        start = end
+
+    return chunks
 
 # Define a function to process inputs and generate predictions
 def generate_output(text: str, model_choice: str, temperature: float) -> str:
