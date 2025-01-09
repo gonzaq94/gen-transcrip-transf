@@ -19,7 +19,8 @@ interface = gr.Interface(
         gr.Textbox(label="Enter your text here", visible=True),  # Text input (hidden by default)
         gr.File(label="Upload a PDF", visible=True),  # PDF input (hidden by default)
         gr.Radio(["Gemini", "Mistral", "GPT"], label="Choose your model"),  # Radio buttons for model selection
-        gr.Slider(minimum=0, maximum=1, step=0.01, value=0.7, label="Select Temperature")  # Slider for temperature
+        gr.Slider(minimum=0, maximum=1, step=0.01, value=0.7, label="Select Temperature"),  # Slider for temperature
+        gr.Number(value=3900, label="Min number of words")  # New field for min number of words with default value
     ],
     outputs=gr.Textbox(label="Output teaching transcript"),  # Output type
     title="Teaching Transcript",
