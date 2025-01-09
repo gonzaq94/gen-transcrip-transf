@@ -14,7 +14,7 @@ If the input text is meaningless or does not have any sense, just return a messa
 The output teaching transcript should be detailed, coherent, and logically structured. It should contain at least {MIN_NUMBER_WORDS} words (without spaces).
 """
 
-def split_text_in_chunks(text: str, tokens_empty_prompt: int, tokens_text: int, max_n_tokens: int) -> list(str)
+def split_text_in_chunks(text: str, tokens_empty_prompt: int, tokens_text: int, max_n_tokens: int) -> list[str]:
 
     return [text]
 
