@@ -1,16 +1,18 @@
 import os
 from mistralai import Mistral
+import tiktoken
 
 # Set up API key for Mistral (assuming you get it after signing up)
 API_KEY = os.getenv("MISTRAL_API_KEY")
 
 # Mistral model version and parameters
 MODEL_VERSION = "mistral-large-latest" #"mistral-7b"  # Adjust this to the model version you're using
-MAX_TOKENS_MISTRAL = 1048576
+MAX_TOKENS_MISTRAL = 8192
 
 
 def get_num_tokens_mistral(text: str) -> int:
-    pass
+    enc = tiktoken.get_encoding("cl100k_base")
+    return len(enc.encode(text))
 
 # Function to call Mistral API
 def call_mistral(query: str, empty_query: str, temp: float = 0) -> str:

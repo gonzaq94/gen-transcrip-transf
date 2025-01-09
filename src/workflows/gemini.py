@@ -4,7 +4,7 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 MODEL_VERSION = "gemini-1.5-flash"
-MAX_TOKENS_GEMINI = 1048576
+MAX_TOKENS_GEMINI = 8192
 
 def get_num_tokens_gemini(text: str) -> int:
         
